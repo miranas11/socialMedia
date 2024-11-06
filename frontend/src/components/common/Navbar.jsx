@@ -49,7 +49,7 @@ const Navbar = () => {
                 className="navbar-brand"
                 onClick={() => navigate("/dashboard")}
             >
-                <img src={logo} alt="Logo" className="logo" />
+                <div className="logo">Home</div>
             </div>
 
             <div className="search-bar-container" onBlur={handleBlur}>

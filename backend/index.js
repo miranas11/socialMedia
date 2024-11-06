@@ -1,11 +1,12 @@
 const express = require("express");
+const http = require("http");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const friendRequestRoutes = require("./routes/friendRequestRoutes");
 const activityLogRoutes = require("./routes/activityLogRoutes");
-// const chatMessageRoutes = require("./routes/chatMessageRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 
 dotenv.config();
@@ -23,27 +24,54 @@ const customLimiter = rateLimit({
 });
 
 const app = express();
-// app.use(customLimiter);
+const server = http.createServer(app);
+const io = require("socket.io")(server, {
+    cors: {
+        origin: "*",
+    },
+});
 
+global.io = io;
+
+io.on("connection", (socket) => {
+    console.log("A user connected:", socket.id);
+
+    socket.on("join", (userId) => {
+        socket.join(userId);
+        console.log(`User ${userId} joined their room.`);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("User disconnected:", socket.id);
+    });
+});
+
+// Middleware and Routes
+// app.use(customLimiter);
 app.use(express.json());
 app.use(cors());
 
 app.use("/api/users", userRoutes);
 app.use("/api/friend-requests", friendRequestRoutes);
 app.use("/api/activity-logs", activityLogRoutes);
-// app.use("/api/chatmessages", chatMessageRoutes);
+app.use("/api/chatmessages", chatRoutes);
 app.use("/api/notifications", notificationRoutes);
 
 const PORT = process.env.PORT || 5000;
-
+const mongourl =
+    process.env.ENV == "DEV"
+        ? process.env.MONGO_URI
+        : process.env.MONGO_PROD_URL;
 mongoose
-    .connect(process.env.MONGO_PROD_URL, {
+    .connect(mongourl, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
     .then(() => {
+        console.log(mongourl);
         console.log("Connected to MongoDB");
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
+            // Use server.listen instead of app.listen
             console.log(`Server is running on port ${PORT}`);
         });
     })

@@ -25,5 +25,6 @@ const chatMessageSchema = new mongoose.Schema({
         default: "unread",
     },
 });
+chatMessageSchema.index({ senderId: 1, receiverId: 1 });
 
 module.exports = mongoose.model("ChatMessage", chatMessageSchema);

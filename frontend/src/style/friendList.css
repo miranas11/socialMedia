@@ -1,13 +1,16 @@
+/* General layout for the friends list */
 .friends-list {
     margin-top: 20px;
 }
 
+/* Styling for the friends container */
 .friends-container {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
 
+/* Friend tile styles */
 .friend-tile {
     display: flex;
     align-items: center;
@@ -42,11 +45,6 @@
     margin-bottom: 5px;
 }
 
-.friend-last-seen {
-    font-size: 0.85em;
-    color: #777;
-}
-
 .open-chat-button {
     background-color: #007bff;
     color: #fff;
@@ -62,11 +60,110 @@
     background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    .friend-tile {
-        padding: 12px;
-    }
+/* Chat container styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.back-to-friends-button {
+    align-self: flex-start;
+    margin-bottom: 15px;
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.back-to-friends-button:hover {
+    background-color: #ff4c4c;
+}
+
+/* Message container styles */
+.messages-container {
+    flex: 1;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.1px 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #3c9aff;
+    color: #fff;
+    border-radius: 15px 15px 0 15px;
+}
+
+.received {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 15px 15px 15px 0;
+}
+
+/* Message input area styles */
+.message-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.message-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.message-input input:focus {
+    border-color: #007bff;
+}
+
+.message-input button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.message-input button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .friend-avatar {
         width: 40px;
         height: 40px;
@@ -80,13 +177,13 @@
         padding: 4px 8px;
         font-size: 0.8em;
     }
+
+    .message {
+        font-size: 0.9em;
+    }
 }
 
 @media (max-width: 412px) {
-    .friend-tile {
-        padding: 10px;
-    }
-
     .friend-avatar {
         width: 35px;
         height: 35px;
@@ -99,5 +196,10 @@
     .open-chat-button {
         padding: 3px 7px;
         font-size: 0.75em;
+    }
+
+    .message-input button {
+        padding: 8px 12px;
+        font-size: 0.9em;
     }
 }
