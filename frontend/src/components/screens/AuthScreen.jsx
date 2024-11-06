@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../style/auth.css";
 import background from "../../assets/auth_bg.jpeg";
-import logo from "../../assets/logo_white.png";
 import { useNavigate } from "react-router-dom";
 import {
     loginUser,

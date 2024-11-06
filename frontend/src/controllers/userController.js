@@ -99,13 +99,14 @@ export const validateToken = async (token) => {
             },
         });
         if (!response.data.success) localStorage.removeItem("user");
-        return response.data.success;
+        return response.data;
     } catch (error) {
         localStorage.removeItem("user");
         alert(
             error.response?.data?.message ||
                 "An error occurred during token validation."
         );
+
         return error.response?.data;
     }
 };

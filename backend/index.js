@@ -37,7 +37,7 @@ app.use("/api/notifications", notificationRoutes);
 const PORT = process.env.PORT || 5000;
 
 mongoose
-    .connect(process.env.MONGO_URI, {
+    .connect(process.env.MONGO_PROD_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
