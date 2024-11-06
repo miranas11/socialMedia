@@ -4,7 +4,7 @@ import config from "../config";
 const API_BASE_URL =
     config.ENV === "DEV"
         ? "http://localhost:5000"
-        : "http://socialmedia-production-4540.up.railway.app";
+        : "socialmedia-production-2474.up.railway.app";
 export const getUserNotifications = async (token) => {
     try {
         const response = await axios.get(`${API_BASE_URL}/api/notifications`, {
