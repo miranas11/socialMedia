@@ -52,11 +52,6 @@ const AuthScreen = () => {
     return (
         <div className="social-home">
             <div className="social-header">
-                <img
-                    src={background}
-                    alt="Background"
-                    className="social-background"
-                />
                 <div className="social-content-container">
                     {showLogin ? (
                         <Login

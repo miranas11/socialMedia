@@ -52,49 +52,52 @@ const Navbar = () => {
                 <div className="logo">Home</div>
             </div>
 
-            <div className="search-bar-container" onBlur={handleBlur}>
-                <form
-                    className="search-bar"
-                    onSubmit={handleSearchSubmit}
-                    onFocus={() => setIsSearchFocused(true)}
-                >
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                    />
-                    <button type="submit">
-                        <FaSearch />
-                    </button>
-                </form>
-
-                {isSearchFocused && searchResults.length > 0 && (
-                    <div
-                        className="search-results"
-                        onMouseDown={(e) => e.preventDefault()} // Prevent blur when interacting with results
+            {/* Conditionally render the search bar if not on the auth page */}
+            {!isAuthPage && (
+                <div className="search-bar-container" onBlur={handleBlur}>
+                    <form
+                        className="search-bar"
+                        onSubmit={handleSearchSubmit}
+                        onFocus={() => setIsSearchFocused(true)}
                     >
-                        {searchResults.map((result) => (
-                            <div
-                                key={result._id}
-                                className="search-result-item"
-                            >
-                                <Link
-                                    to={`/profile/${result._id}`}
-                                    onClick={handleResultClick}
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                        />
+                        <button type="submit">
+                            <FaSearch />
+                        </button>
+                    </form>
+
+                    {isSearchFocused && searchResults.length > 0 && (
+                        <div
+                            className="search-results"
+                            onMouseDown={(e) => e.preventDefault()} // Prevent blur when interacting with results
+                        >
+                            {searchResults.map((result) => (
+                                <div
+                                    key={result._id}
+                                    className="search-result-item"
                                 >
-                                    <img
-                                        src={result.profileImage || noImage}
-                                        alt={`${result.username}`}
-                                        className="search-result-avatar"
-                                    />
-                                    <span>{result.username}</span>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
+                                    <Link
+                                        to={`/profile/${result._id}`}
+                                        onClick={handleResultClick}
+                                    >
+                                        <img
+                                            src={result.profileImage || noImage}
+                                            alt={`${result.username}`}
+                                            className="search-result-avatar"
+                                        />
+                                        <span>{result.username}</span>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
 
             <div className="navbar-content">
                 {token && user?.username && (
