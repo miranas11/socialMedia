@@ -1,0 +1,46 @@
+.dashboard-page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.top-right,
+.bottom-right {
+    flex: 1;
+}
+
+.activity-section,
+.notification-section,
+.friend-request-section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.activity-section h2,
+.notification-section h2,
+.friend-request-section h2 {
+    margin-bottom: 15px;
+}
+
+.activity-section p,
+.notification-section p,
+.friend-request-section p {
+    color: #666;
+}

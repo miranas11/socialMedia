@@ -1,0 +1,140 @@
+.profile-page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.profile-left-section {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profile-right-section {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.profile-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.add-friend-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.add-friend-button:hover {
+    background-color: #0056b3;
+}
+
+.profile-details {
+    padding: 15px;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-item:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-edit-input {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.save-button,
+.edit-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover,
+.edit-button:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .profile-page {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .profile-left-section,
+    .profile-right-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 412px) {
+    .profile-name {
+        font-size: 1.2rem;
+    }
+
+    .label {
+        font-size: 0.9rem;
+    }
+
+    .profile-edit-input {
+        width: 70%;
+        font-size: 0.85em;
+    }
+
+    .add-friend-button,
+    .save-button,
+    .edit-button {
+        padding: 7px 12px;
+        font-size: 0.8em;
+    }
+}
