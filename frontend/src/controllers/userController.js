@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000";
-
+//const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "http://socialmedia-production-4540.up.railway.app";
 export const registerUser = async (userData) => {
     try {
         const response = await axios.post(
