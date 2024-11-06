@@ -43,6 +43,8 @@ const Navbar = () => {
         }
     };
 
+    if (isAuthPage) return null;
+
     return (
         <nav className="navbar">
             <div

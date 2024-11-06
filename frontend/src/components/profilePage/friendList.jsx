@@ -8,7 +8,7 @@ import config from "../../config";
 const API_BASE_URL =
     config.ENV === "DEV"
         ? "http://localhost:5000"
-        : "socialmedia-production-2474.up.railway.app";
+        : "https://socialmedia-production-2474.up.railway.app";
 
 const socket = io.connect(API_BASE_URL);
 
