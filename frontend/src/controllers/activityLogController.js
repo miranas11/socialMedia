@@ -1,7 +1,10 @@
 import axios from "axios";
+import config from "../config";
 
-// const API_BASE_URL = "http://localhost:5000";
-const API_BASE_URL = "http://socialmedia-production-4540.up.railway.app";
+const API_BASE_URL =
+    config.ENV === "DEV"
+        ? "http://localhost:5000"
+        : "http://socialmedia-production-4540.up.railway.app";
 
 export const getUserActivityLogs = async (token) => {
     try {

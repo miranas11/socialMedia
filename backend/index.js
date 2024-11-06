@@ -23,7 +23,7 @@ const customLimiter = rateLimit({
 });
 
 const app = express();
-app.use(customLimiter);
+// app.use(customLimiter);
 
 app.use(express.json());
 app.use(cors());
